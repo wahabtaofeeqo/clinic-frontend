@@ -1,0 +1,55 @@
+<main class="main">
+	<nav class="navbar navbar-expand navbar-light bg-primary main-nav">
+		<div class="container">
+			<a href="/" class="navbar-brand"><b>Clinic</b></a>
+
+			<ul class="navbar-nav">
+		      	<li *ngIf="!online" class="nav-item">
+		        	<a class="nav-link" routerLink="/register">Create Account</a>
+		      	</li>
+
+		      	<li *ngIf="online" class="nav-item">
+		        	<a class="nav-link" routerLink="/profile">Patient Dashboard</a>
+		      	</li>
+
+		      	<li *ngIf="!online" class="nav-item active">
+		        	<a class="nav-link" routerLink="/login">Login</a>
+		      	</li>
+
+		      	<li *ngIf="online" class="nav-item active">
+		        	<a class="nav-link" href="/logout?page=patient">Logout</a>
+		      	</li>
+
+		      	<li class="nav-item">
+		        	<a class="nav-link" routerLink="admin">Doctor</a>
+		      	</li>	      	
+		    </ul>
+		</div>
+	</nav> 
+
+	<div class="wrapper">
+		<div class="col-lg-4 col-md- center">
+			<div class="card">
+				<div class="card-header py-0">
+					<h4 class="card-title mt-2">Complaint Box</h4>
+				</div>
+
+				<div class="card-body">
+					<form [formGroup]="complainForm" (ngSubmit)="processForm(complainForm.value)">
+						<div class="form-group">
+							<label for="">Subject</label>
+							<input type="text" class="form-control" placeholder="Subject" formControlName="subject" required>
+						</div>
+
+						<div class="form-group">
+							<label for="">Message</label>
+							<textarea rows="4" class="form-control" formControlName="message" placeholder="Message"></textarea>
+						</div>
+
+						<button class="btn btn-primary px-5 mt-4">Send</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

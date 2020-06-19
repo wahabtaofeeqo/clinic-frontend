@@ -1,0 +1,41 @@
+<div class="container-fluid h-100 bg-light">
+	<div class="row full-row">
+		<aside class="col-lg-2 bg-danger">
+			<app-sidebar></app-sidebar>
+		</aside>
+
+		<main class="col-lg-10 p-4">
+			<div class="row">
+				<div class="container-fluid">
+					<h4 class="h4 mb-4">Complaints</h4>
+
+					<table class="table tab-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Phone</th>
+								<th>Subject</th>
+								<th>Complaint</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr *ngIf="complaints == null">
+								<td colspan="4" class="text-center py-4"><h4>No Record Found</h4></td>
+							</tr>
+
+							<tr *ngFor="let complaint of complaints; index as i">
+								<td>{{(i + 1)}}</td>
+								<td>{{complaint.firstname}}</td>
+								<td>{{complaint.phone}}</td>
+								<td>{{complaint.subject}}</td>
+								<td>{{complaint.message}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>

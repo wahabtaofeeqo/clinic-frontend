@@ -1,0 +1,50 @@
+<div class="container-fluid h-100 bg-light">
+	<div class="row full-row">
+		<aside class="col-lg-2 bg-danger">
+			<app-sidebar></app-sidebar>
+		</aside>
+
+		<main class="col-lg-10 p-4">
+			<div class="row">
+				<div class="container-fluid">
+					<h4 class="h4 mb-4">Appointments</h4>
+				</div>
+
+				<table class="table tab-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Reason</th>
+							<th>Date</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr *ngIf="appointments == null">
+							<td colspan="4" class="text-center py-4"><h4>No Record Found</h4></td>
+						</tr>
+
+						<tr *ngFor="let appointment of appointments; index as i">
+							<td>{{(i + 1)}}</td>
+							<td>{{appointment.reason}}</td>
+							<td>{{appointment.date}}</td>
+							<td>
+								<div *ngIf="appointment.status == 1">
+									<button class="btn btn-success">Approved</button>
+								</div>
+
+								<button *ngIf="appointment.status == 2" class="btn btn-danger">Declined</button>
+
+								<div *ngIf="appointment.status == 0">
+									<a href="#" class="text-success" (click)="approve(appointment.id, $event)">Approve</a> | 
+									<a href="#" class="text-danger" (click)="decline(appointment.id, $event)">Decline</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
+</div>
